@@ -1,0 +1,25 @@
+{
+  "name": "wombat",
+  "version": "1.0.0",
+  "description": "A serverlesss web app to secure home data",
+  "main": "handler.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ecoruh/wombat.git"
+  },
+  "keywords": [
+    "wombat"
+  ],
+  "author": "Ergun Coruh",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ecoruh/wombat/issues"
+  },
+  "homepage": "https://github.com/ecoruh/wombat#readme",
+  "dependencies": {
+    "aws-sdk": "^2.64.0"
+  }
+}
