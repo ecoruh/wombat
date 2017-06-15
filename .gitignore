@@ -61,3 +61,7 @@ typings/
 admin.env
 _meta
 .serverless
+
+# web
+web/build
+app
