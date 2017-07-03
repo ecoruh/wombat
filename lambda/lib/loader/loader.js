@@ -1,8 +1,6 @@
 'use strict';
 
 const crypto = require('crypto');
-const api = require('../../lib/api');
-const jwt = require('jsonwebtoken'); // used to create, sign, and verify tokens
 const fs = require('fs');
 
 exports.loadBook = (fileName, hash) => {
