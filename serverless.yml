@@ -13,14 +13,52 @@ provider:
   name: aws
   runtime: nodejs6.10
   region: ${file(./serverless.env.yml):dev.REGION}
+  environment:
+    SECRET1: ${file(./serverless.env.yml):dev.SECRET1}
+    SECRET2: ${file(./serverless.env.yml):dev.SECRET2}
+    HASH: ${file(./serverless.env.yml):dev.HASH}
+    FILE: ${file(./serverless.env.yml):dev.FILE}
+
+package:
+  individually: true
+  exclude:
+    - lambda/**
 
 functions:
-  currentTime:
-    handler: lambda/ping/handler.endpoint
+  login:
+    handler: lambda/login/login.endpoint
+    package:
+      include:
+        - lambda/login/login.js
     events:
       - http:
-          path: ping
+          path: login
+          method: post
+          integration: lambda-proxy
+          cors:
+            origins:
+              - "*"
+            headers:
+              - Accept
+              - Content-Type
+            allowCredentials: true
+  book:
+    handler: lambda/book/book.endpoint          
+    package:
+      include:
+        - lambda/book/book.js
+      - http:
+          path: book
           method: get
+          integration: lambda-proxy
+          cors:
+            origins:
+              - "*"
+            headers:
+              - Accept
+              - Content-Type
+              - x-access-token
+            allowCredentials: true
 
 resources:
   Resources:

@@ -2,10 +2,6 @@
   "name": "wombat",
   "version": "1.0.0",
   "description": "A serverlesss web app to secure home data",
-  "main": "handler.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ecoruh/wombat.git"
@@ -20,10 +16,20 @@
   },
   "homepage": "https://github.com/ecoruh/wombat#readme",
   "dependencies": {
-    "aws-sdk": "^2.64.0"
+    "aws-sdk": "^2.64.0",
+    "dotenv": "^4.0.0",
+    "jsonwebtoken": "^7.4.1"
   },
   "devDependencies": {
+    "aws-sdk-mock": "^1.7.0",
     "gulp": "^3.9.1",
+    "istanbul": "^0.4.5",
+    "mocha": "^3.4.2",
+    "mocha-lcov-reporter": "^1.3.0",
     "serverless-single-page-app-plugin": "file:./serverless-single-page-app-plugin"
+  },
+  "scripts": {
+    "read": "open coverage/lcov-report/index.html",
+    "test": "istanbul cover node_modules/mocha/bin/_mocha -- -R spec lambda/**/*-test.js"
   }
 }
