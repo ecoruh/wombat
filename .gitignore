@@ -26,3 +26,4 @@ app/**/*.*
 *.enc
 
 sandbox/**
+./package-lock.json

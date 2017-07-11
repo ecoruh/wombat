@@ -47,6 +47,7 @@ functions:
     package:
       include:
         - lambda/book/book.js
+    events:
       - http:
           path: book
           method: get
