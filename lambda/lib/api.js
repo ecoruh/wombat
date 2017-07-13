@@ -13,6 +13,6 @@ exports.succeed = (context, data) => {
 };
 
 exports.error = (context, statusCode, errorMessage) => {
-  var error = { statusCode: statusCode, body: errorMessage };
+  var error = { code: statusCode, message: errorMessage };
   context.succeed(response(statusCode, JSON.stringify({ error: error })));
 };

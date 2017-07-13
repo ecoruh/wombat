@@ -5,7 +5,7 @@ const Auth = {
   token: {},
   message: '',
   authenticate(cb, password) {
-    fetch('/api/authenticate', {
+    fetch('/dev/authenticate', {
       method: 'POST',
       headers: {
         'Accept': 'application/json',

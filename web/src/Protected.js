@@ -11,12 +11,12 @@ import {
 const Record = {
   list: [],
   getRecord(cb) {
-    fetch('/api/book', {
+    fetch('/dev/book', {
       method: 'GET',
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
-        'x-access-token': '' + Auth.token
+        'Authorization': '' + Auth.token
       }
     })
       .then(ApiUtils.checkStatus)

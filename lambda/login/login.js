@@ -16,9 +16,11 @@ exports.endpoint = (event, context) => {
     .digest('hex');
   if (hash === process.env.HASH) {
     // if password is right create a token
-    let token = jwt.sign({ data: login.password }, process.env.SECRET2, {
+    console.log(JSON.stringify({ data: `${login.password}`}));
+    let token = jwt.sign({ data: `${login.password}`}, process.env.SECRET2, {
       expiresIn: 60 * 60 // expires in 1 hour
     });
+    console.log('**** login: ' + token);
     api.succeed(context, {success: true, message: 'token', token: token});
     return;
   }

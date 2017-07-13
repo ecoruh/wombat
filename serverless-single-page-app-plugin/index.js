@@ -10,9 +10,9 @@ class ServerlessPlugin {
       syncToS3: {
         usage: 'Deploys the `app` directory to your bucket',
         lifecycleEvents: [
-          'sync',
-        ],
-      },
+          'sync'
+        ]
+      }
     };
 
     this.hooks = {
@@ -27,7 +27,7 @@ class ServerlessPlugin {
       's3',
       'sync',
       'app/',
-      `s3://${s3Bucket}/`,
+      `s3://${s3Bucket}/`
     ];
     const result = spawnSync('aws', args);
     const stdout = result.stdout.toString();

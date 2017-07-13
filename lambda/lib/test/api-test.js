@@ -7,6 +7,7 @@ describe('test api', (done) => {
     const context = {
       succeed: response => {
         let obj = JSON.parse(response.body);
+        console.log(response.body);
         assert (response.statusCode === 200, 'status code should be ok');
         assert(obj.foo === 'fred', 'body should match');
         done();
@@ -19,8 +20,9 @@ describe('test api', (done) => {
     const context = {
       succeed: response => {
         let obj = JSON.parse(response.body);
-        assert (obj.error.statusCode === 500, 'status code should be 500');
-        assert(obj.error.body === 'error', 'error message should match');
+        console.log(response.body);
+        assert (obj.error.code === 500, 'status code should be 500');
+        assert(obj.error.message === 'error', 'error message should match');
         done();
       }
     }

@@ -5,10 +5,6 @@ frameworkVersion: ">=1.2.0 <2.0.0"
 plugins:
   - serverless-single-page-app-plugin
 
-custom:
-  s3Bucket: ${file(./serverless.env.yml):dev.BUCKET}
-  origin: ${file(./serverless.env.yml):dev.ORIGIN}
-
 provider:
   name: aws
   runtime: nodejs6.10
@@ -19,10 +15,23 @@ provider:
     HASH: ${file(./serverless.env.yml):dev.HASH}
     FILE: ${file(./serverless.env.yml):dev.FILE}
 
+custom:
+  s3Bucket: ${file(./serverless.env.yml):dev.BUCKET}
+  origin: ${file(./serverless.env.yml):dev.ORIGIN}
+
 package:
   individually: true
   exclude:
+    - coverage/**
+    - app/**
+    - crypto/**
     - lambda/**
+    - sandbox/**
+    - serverless-single-page-app-plugin/**
+    - web/**
+    - .env
+  include:
+    - lambda/lib/*.*
 
 functions:
   login:
@@ -32,7 +41,7 @@ functions:
         - lambda/login/login.js
     events:
       - http:
-          path: login
+          path: authenticate
           method: post
           integration: lambda-proxy
           cors:
@@ -47,6 +56,7 @@ functions:
     package:
       include:
         - lambda/book/book.js
+        - lambda/book/*.enc
     events:
       - http:
           path: book
@@ -58,7 +68,7 @@ functions:
             headers:
               - Accept
               - Content-Type
-              - x-access-token
+              - Authorization
             allowCredentials: true
 
 resources:
