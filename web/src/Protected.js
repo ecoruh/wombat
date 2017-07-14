@@ -7,11 +7,12 @@ import {
   Col,
   Button,
 } from 'react-bootstrap';
+import {apiUrl} from './Base';
 
 const Record = {
   list: [],
   getRecord(cb) {
-    fetch('/dev/book', {
+    fetch(apiUrl + '/book', {
       method: 'GET',
       headers: {
         'Accept': 'application/json',

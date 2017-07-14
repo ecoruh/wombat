@@ -1,11 +1,12 @@
 import ApiUtils from './ApiUtils';
+import {apiUrl} from './Base';
 
 const Auth = {
   isAuthenticated: false,
   token: {},
   message: '',
   authenticate(cb, password) {
-    fetch('/dev/authenticate', {
+    fetch( apiUrl + '/authenticate', {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
