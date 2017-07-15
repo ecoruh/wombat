@@ -19,6 +19,7 @@ custom:
 package:
   individually: true
   exclude:
+    - prod
     - README.md
     - LICENSE
     - package-lock.json
