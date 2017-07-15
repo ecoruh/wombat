@@ -43,6 +43,9 @@ Wombat uses:
 - [Step 1 - Create an AWS account](http://68-kb.blogspot.com.au/2017/04/hdc-create-aws-account.html)
 - [Step 2 - Register a domain name](http://68-kb.blogspot.com.au/2017/04/hdc-amazon-route-53.html)
 - [Step 3 - Request a certificate](http://68-kb.blogspot.com.au/2017/04/hdc-aws-certficate-manager.html)
+- Step 4 - Configure AWS CloudFront to host your web app's end point
+- Step 5 - Configure AWS Route53 and create an ALIAS for your front-end app
+- Step 6 - Configure AWS Route53 and create an ALIAS for your back-end api
 
 ## Local Setup
 
