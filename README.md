@@ -45,9 +45,22 @@ Wombat uses:
 - [Step 3 - Request a certificate](http://68-kb.blogspot.com.au/2017/04/hdc-aws-certficate-manager.html)
 - Step 4 - Configure AWS CloudFront to host your web app's end point
 - Step 5 - Configure AWS Route53 and create an ALIAS for your front-end app
-- Step 6 - Configure AWS Route53 and create an ALIAS for your back-end api
+- Step 6 - Configure a Custom Domain under AWS API Gateway to host your back-end api
+- Step 7 - Configure AWS Route53 and create an ALIAS for your back-end api
 
 ## Local Setup
 
 - [Step 1 - Download Node.js and npm](https://www.npmjs.com/get-npm)
 - [Step 2 - Install serverless](https://serverless.com/)
+
+## Commands
+
+### Deploy back-end
+```
+./prod
+```
+
+### Deploy front-end
+```
+gulp
+```
