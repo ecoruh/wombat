@@ -2,9 +2,6 @@ service: wombat
 
 frameworkVersion: ">=1.2.0 <2.0.0"
 
-plugins:
-  - serverless-single-page-app-plugin
-
 provider:
   name: aws
   runtime: nodejs6.10
@@ -22,6 +19,9 @@ custom:
 package:
   individually: true
   exclude:
+    - README.md
+    - LICENSE
+    - package-lock.json
     - coverage/**
     - app/**
     - crypto/**
@@ -30,7 +30,9 @@ package:
     - serverless-single-page-app-plugin/**
     - web/**
     - .env
+    - serverless.env.yml
   include:
+    - ./*.enc
     - lambda/lib/*.*
 
 functions:
@@ -56,7 +58,6 @@ functions:
     package:
       include:
         - lambda/book/book.js
-        - lambda/book/*.enc
     events:
       - http:
           path: book

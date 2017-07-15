@@ -5,7 +5,7 @@ require('dotenv').config();
 describe('test login', () => {
   
   it('test login (happy)', (done) => {
-    const body = { password: 'minik'};
+    const body = { password: 'abc123'};
     const event = {
       httpMethod: 'POST',
       body: JSON.stringify(body),

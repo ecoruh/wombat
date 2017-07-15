@@ -33,7 +33,7 @@ encryptFile = (fileName, hash) => {
   const cipher = crypto.createCipher('aes192', hash);
   let encrypted = cipher.update(JSON.stringify(dataJson), 'utf8', 'hex');
   encrypted += cipher.final('hex');
-  fs.writeFileSync(`../lambda/lib/loader/${fileName}.enc`, encrypted, { encoding: 'utf8' });
+  fs.writeFileSync(`../${fileName}.enc`, encrypted);
 
 }
 
@@ -63,5 +63,17 @@ dev:
   fs.writeFileSync('../serverless.env.yml', contents, { encoding: 'utf8' });
 
   rl.close();
+
+  if (inFile === 'sample') {
+    contents = `SECRET1=${process.env.SECRET1}
+SECRET2=${process.env.SECRET2}
+HASH=${hash}
+FILE=${inFile}
+PASSWORD=${answer}
+`;
+    fs.writeFileSync('../.env', contents, { encoding: 'utf8' });
+
+    rl.close();
+  }
 });
 

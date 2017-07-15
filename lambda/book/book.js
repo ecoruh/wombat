@@ -8,7 +8,6 @@ const jwt = require('jsonwebtoken'); // used to create, sign, and verify tokens
 
 exports.endpoint = (event, context) => {
   var token = event.headers.Authorization;
-  console.log('**** book: ' + token);
   if (!security.validToken(token)) {
     return api.error(context, 400, 'Bad request'); // No detail here
   }

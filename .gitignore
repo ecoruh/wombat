@@ -26,5 +26,4 @@ app/**/*.*
 *.enc
 
 sandbox/**
-**/package-lock.json
 web/src/Base.js
