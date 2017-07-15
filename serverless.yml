@@ -19,6 +19,7 @@ custom:
 package:
   individually: true
   exclude:
+    - doc
     - prod
     - README.md
     - LICENSE
@@ -33,7 +34,6 @@ package:
     - .env
     - serverless.env.yml
   include:
-    - ./*.enc
     - lambda/lib/*.*
 
 functions:
