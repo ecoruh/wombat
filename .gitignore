@@ -21,9 +21,11 @@ _meta
 
 # web
 web/build
+web/src/url/api-prod.js
+web/src/url/api.js
 app/**/*.*
 *.tab
 *.enc
 
+# misc
 sandbox/**
-web/src/Base.js

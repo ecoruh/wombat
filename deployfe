@@ -1,0 +1,6 @@
+#!/bin/bash
+cp web/src/url/api-prod.js web/src/url/api.js
+npm run --prefix web build
+cp -R web/build/ app
+echo ">> deploying to s3..wait.."
+sls syncToS3

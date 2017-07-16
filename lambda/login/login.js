@@ -21,6 +21,9 @@ exports.endpoint = (event, context) => {
     });
     api.succeed(context, {success: true, message: 'token', token: token});
     return;
+  } else {
+    api.succeed(context, {success: false, message: 'Authentication failed! Wrong password!'});
+    return;
   }
   api.error(context, 403, 'Forbidden');
 };

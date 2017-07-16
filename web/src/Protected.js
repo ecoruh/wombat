@@ -7,7 +7,8 @@ import {
   Col,
   Button,
 } from 'react-bootstrap';
-import {apiUrl} from './Base';
+import { apiUrl } from './url/api';
+import ClipboardButton from 'react-clipboard.js';
 
 const Record = {
   list: [],
@@ -40,6 +41,7 @@ class ButtonInstance extends React.Component {
     super();
     this.state = { show: false };
     this.toggle = this.toggle.bind(this);
+    this.hide = this.hide.bind(this);
   }
 
   toggle() {
@@ -47,11 +49,20 @@ class ButtonInstance extends React.Component {
     this.setState({ show: newShow });
   }
 
+  hide() {
+    this.setState({ show: false });
+  }
+
   render() {
+    const buttonStyle = { borderStyle: 'dotted', backgroundColor: "#EBF5FB", borderRadius: "4px", borderColor: "#AED6F1" };
     return (
       <div>
+        <ClipboardButton onClick={this.hide} style={buttonStyle} data-clipboard-text={this.props.value}>
+          <span>&#x1F4CB;</span>
+        </ClipboardButton>
         <Button bsStyle="link" onClick={this.toggle}>{this.props.name}</Button>
-        <span>{'    '}</span>{this.state.show ? this.props.value : ''}
+        <br />
+        {this.state.show ? this.props.value : ''}
       </div>
     )
   }
@@ -63,7 +74,7 @@ class TableInstance extends React.Component {
       <tr><td><ButtonInstance id={item.id} name={item.name} value={item.value} /></td></tr>
     );
     return (
-      <Table striped bordered condensed hover>
+      <Table bordered condensed hover>
         <tbody>
           {listItems}
         </tbody>

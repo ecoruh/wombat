@@ -1,0 +1,7 @@
+#!/bin/bash
+cp src/url/api-dev.js src/url/api.js
+npm run build
+cd server
+npm install
+node app
+cd ..

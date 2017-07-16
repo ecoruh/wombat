@@ -1,5 +1,5 @@
 import ApiUtils from './ApiUtils';
-import {apiUrl} from './Base';
+import {apiUrl} from './url/api';
 
 const Auth = {
   isAuthenticated: false,
