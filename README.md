@@ -63,6 +63,7 @@ Barclays Bank ATM password	abc123
 ```
 Let's say your file is called `sample.tab`. Before you deploy it you need to encrypt its contents using your login password.
 > Your password is never stored anywhere.
+
 Enter these commands:
 ```
 cp sample.tab crypto
