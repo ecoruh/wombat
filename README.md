@@ -54,6 +54,25 @@ Wombat uses:
 
 ## Commands
 
+### Encrypt your data file
+Your data file should be a text file. Each line should have a name, followed by a TAB character, followed by a value:
+```
+Barclays Bank password	abc123
+Barclays Bank ATM password	abc123
+...
+```
+Your data file should have extension `*.tab`. 
+
+In this example lets say youur input file is `sample.tab`. Before you deploy this file you need to encrypt its contents using your login password.
+
+Note: Your password is never used directly or stored anywhere.
+
+```
+cp sample.tab crypto
+cd crypto
+node app sample
+```
+
 ### Deploy back-end
 ```
 ./deploybe
