@@ -12,6 +12,7 @@ provider:
   environment:
     SECRET1: ${file(./serverless.env.yml):dev.SECRET1}
     SECRET2: ${file(./serverless.env.yml):dev.SECRET2}
+    WOMBAT: ${file(./serverless.env.yml):dev.WOMBAT}
     HASH: ${file(./serverless.env.yml):dev.HASH}
     FILE: ${file(./serverless.env.yml):dev.FILE}
 

@@ -38,7 +38,8 @@ describe('test login', () => {
     }
     const context = {
       succeed: response => {
-        assert(response.statusCode === 403, 'should NOT succeed');
+        let obj = JSON.parse(response.body);
+        assert(!obj.success, 'should NOT succeed');
         done();
       }
     };

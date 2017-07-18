@@ -42,11 +42,14 @@ rl.question('Enter password to generate secret codes: ', (answer) => {
   console.log(`> password: ${answer}`);
   console.log('> GENERATING HASH...');
   console.log('  SECRET: ' + process.env.SECRET1);
-  const secret = process.env.SECRET1;
-  const hash = crypto.createHmac('sha256', secret)
+  const hash = crypto.createHmac('sha256', process.env.SECRET1)
     .update(answer)
     .digest('hex');
   console.log('  HASH: ' + hash);
+  const wombat = crypto.createHmac('sha256', process.env.SECRET2)
+    .update(hash)
+    .digest('hex');
+  console.log('  WOMBAT: ' + wombat);
 
   encryptFile(inFile, hash);
 
@@ -57,6 +60,7 @@ dev:
   REGION: ${process.env.REGION}
   SECRET1: ${process.env.SECRET1}
   SECRET2: ${process.env.SECRET2}
+  WOMBAT: ${wombat}
   FILE: ${inFile}
   HASH: ${hash}
 `;
