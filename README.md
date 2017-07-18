@@ -12,7 +12,7 @@ Simple secure web interface to access your sensitive data anywhere, using any de
 ![login](doc/img/login.png)
  
  ### Autocomplete
-Seamless auto-complete search, click to preview or copy to clipboard.
+Seamless auto-complete search. Click the link to preview or click the copy icon to copy contents to clipboard.
 
 ![search](doc/img/search.png) 
 
