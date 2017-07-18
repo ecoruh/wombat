@@ -4,7 +4,7 @@ Keep your household data safe, protected by strong encryption and authentication
 
 ## Screenshots
 
-> Note: Screenshots given below show insecure localhost versions of the HDC. When deployed to your domain, the app must be secured by HTTPS. See [Web Hosting](#web-hosting) section below on how to secure your domain with HTTPS. 
+> Note: Screenshots given below show insecure localhost versions of the Wombat. When deployed on your domain, the app must be secured by HTTPS.  
 
 ### Simple
 Simple secure web interface to access your sensitive data anywhere, using any device, any brand, desktop or mobile alike:
@@ -12,7 +12,7 @@ Simple secure web interface to access your sensitive data anywhere, using any de
 ![login](doc/img/login.png)
  
  ### Autocomplete
-Seamless auto-complete search, click to preview or copy:
+Seamless auto-complete search, click to preview or copy to clipboard.
 
 ![search](doc/img/search.png) 
 
@@ -37,7 +37,6 @@ Wombat uses:
 - Sensitive data should be encrypted.
 - Sensitive data should not be checked in under source control.
 
-[](#web-hosting)
 ## AWS Setup
 
 - [Step 1 - Create an AWS account](http://68-kb.blogspot.com.au/2017/04/hdc-create-aws-account.html)
@@ -57,10 +56,15 @@ Wombat uses:
 
 ### Deploy back-end
 ```
-./prod
+./deploybe
 ```
 
 ### Deploy front-end
 ```
-gulp
+./deployfe
+```
+### Develop front-end on localhost
+```
+cd web
+./express
 ```
