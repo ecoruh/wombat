@@ -47,7 +47,7 @@ apiRoutes.post('/authenticate', function (req, res) {
     .digest('hex');
   if (hash === process.env.HASH) {
     // if password is right create a token
-    var token = jwt.sign({ data: req.body.password }, process.env.SECRET2, {
+    var token = jwt.sign({ data: process.env.HASH }, process.env.SECRET2, {
       expiresIn: 60 * 60 // expires in 1 hour
     });
 
