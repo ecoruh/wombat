@@ -55,13 +55,13 @@ Wombat uses:
 ## Commands
 
 ### Encrypt your data file
-Create a text file with extension `*.tab` that contains your personal data. In this file, each line should have a name, followed by a TAB character, and followed by a value:
+Create a text file with extension `*.tab` that contains your personal data. In this file, each line should have a name, followed by a TAB character, followed by a value:
 ```
 Barclays Bank password	abc123
 Barclays Bank ATM password	abc123
 ...
 ```
-Lets say your file is called `sample.tab`. Before you deploy it you need to encrypt its contents using your login password.
+Let's say your file is called `sample.tab`. Before you deploy it you need to encrypt its contents using your login password.
 > Your password is never stored anywhere.
 Enter these commands:
 ```
