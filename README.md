@@ -4,7 +4,7 @@ Keep your household data safe, protected by strong encryption and authentication
 
 ## Screenshots
 
-> Note: Screenshots given below show insecure localhost versions of the Wombat. When deployed on your domain, the app must be secured by HTTPS.  
+> Note: Screenshots below show insecure localhost versions of Wombat. When deployed on your domain, the web application should be secured by HTTPS.
 
 ### Simple
 Simple secure web interface to access your sensitive data anywhere, using any device, any brand, desktop or mobile alike:
