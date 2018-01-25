@@ -50,7 +50,7 @@ Wombat uses:
 ## Local Setup
 
 - [Step 1 - Download Node.js (6.10.0) and npm](https://www.npmjs.com/get-npm)
-- [Step 2 - Install serverless](https://serverless.com/)
+- [Step 2 - Install serverless](https://serverless.com/) >= 1.25.0
 
 ## Commands
 
