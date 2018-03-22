@@ -6,6 +6,7 @@ import {
   Table,
   Col,
   Button,
+  Glyphicon
 } from 'react-bootstrap';
 import { apiUrl } from './url/api';
 import ClipboardButton from 'react-clipboard.js';
@@ -58,7 +59,7 @@ class ButtonInstance extends React.Component {
     return (
       <div>
         <ClipboardButton onClick={this.hide} style={buttonStyle} data-clipboard-text={this.props.value}>
-          <span>&#x1F4CB;</span>
+          <Glyphicon glyph="copy" />
         </ClipboardButton>
         <Button bsStyle="link" onClick={this.toggle}>{this.props.name}</Button>
         <br />

@@ -80,7 +80,7 @@ class Login extends React.Component {
                   onChange={this.handleChange}
                 />
                 <InputGroup.Button>
-                  <Button onClick={this.clearEntry}><Glyphicon glyph="remove-sign" /></Button>
+                  <Button onClick={this.clearEntry}><Glyphicon glyph="remove-circle" /></Button>
                 </InputGroup.Button>
               </InputGroup>
               <HelpBlock>{message}</HelpBlock>
