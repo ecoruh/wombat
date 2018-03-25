@@ -1,6 +1,9 @@
+const AWS = require('aws-sdk');
 const crypto = require('crypto');
 const fs = require('fs');
 require('dotenv').config();
+AWS.config.update({ region: `${process.env.REGION}` });
+const kms = new AWS.KMS();
 
 const readline = require('readline');
 
@@ -13,8 +16,8 @@ rl.question('Enter password to generate secret codes: ', (answer) => {
 
   console.log(`> password: ${answer}`);
   console.log('> GENERATING HASH...');
-  console.log('  SECRET: ' + process.env.SECRET1);
-  const secret = process.env.SECRET1;
+  console.log('  PEAS: ' + process.env.PEAS1);
+  const secret = process.env.PEAS1;
   const hash = crypto.createHmac('sha256', secret)
     .update(answer)
     .digest('hex');
@@ -31,27 +34,37 @@ rl.question('Enter password to generate secret codes: ', (answer) => {
   });
 
   console.log('> ENCRYPTING TAB FILE..');
-  const cipher = crypto.createCipher('aes192', hash);
-  let encrypted = cipher.update(JSON.stringify(dataJson), 'utf8', 'hex');
-  encrypted += cipher.final('hex');
-  fs.writeFileSync('../' + process.env.ENCFILE, encrypted, { encoding: 'utf8' });
 
-  // SECRET1
-  // SECRET2
-  // HASH
-  // ENCFILE
-  // REACT_PATH
+  let params = {
+    KeyId: `${process.env.KEYID}`,
+    KeySpec: 'AES_256'
+  };
+  kms.generateDataKeyWithoutPlaintext(params).promise()
+    .then(data => {
+      let arr = data.KeyId.split('/');
+      return arr[1];
+    })
+    .then(data => kms.encrypt({ KeyId: data, Plaintext: `${JSON.stringify(dataJson)}` }).promise())
+    .then(data => fs.writeFileSync('../' + process.env.ENCFILE, data.CiphertextBlob))
+    .then(() => {
+      let contents = fs.readFileSync('../' + process.env.ENCFILE);
+      return Promise.resolve({ PlaintextBlob: contents });
+    })
+    .then(data => kms.decrypt({ CiphertextBlob: data.PlaintextBlob }).promise())
+    .then(data => console.log(JSON.stringify(data.Plaintext.toString())))
+    .then(() => {
+      console.log('> CREATING ENV FILES..')
+      let env = '';
+      env += 'PEAS1=' + process.env.PEAS1 + '\n';
+      env += 'PEAS2=' + process.env.PEAS2 + '\n';
+      env += 'HASH=' + hash + '\n';
+      env += "ENCFILE=" + process.env.ENCFILE + "\n";
+      env += "KEYID=" + process.env.KEYID + "\n";
+      env += "REGION=" + process.env.REGION + "\n";
+      let suffix = "REACT_PATH=../build";
+      fs.writeFileSync('../.env', env + suffix, { encoding: 'utf8' });
 
-  console.log('> CREATING ENV FILES..')
-  let env = '';
-  env += 'SECRET1=' + process.env.SECRET1 + '\n';
-  env += 'SECRET2=' + process.env.SECRET2 + '\n';
-  env += 'HASH=' + hash + '\n';
-  env += "ENCFILE=" + process.env.ENCFILE + "\n";
-
-  let suffix = "REACT_PATH=../build";
-  fs.writeFileSync('../.env', env + suffix, { encoding: 'utf8' });
-
-  rl.close();
+      rl.close();
+    });
 });
 

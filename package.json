@@ -16,12 +16,12 @@
   },
   "homepage": "https://github.com/ecoruh/wombat#readme",
   "dependencies": {
+    "aws-sdk": "^2.54.0",
     "dotenv": "^4.0.0",
     "jsonwebtoken": "^7.4.1",
     "serverless-single-page-app-plugin": "file:./serverless-single-page-app-plugin"
   },
   "devDependencies": {
-    "aws-sdk": "^2.54.0",
     "aws-sdk-mock": "^1.7.0",
     "gulp": "^3.9.1",
     "istanbul": "^0.4.5",

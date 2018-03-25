@@ -66,7 +66,7 @@ class Search extends React.Component {
                   autoCapitalize="none"
                 />
                 <InputGroup.Button>
-                  <Button onClick={this.clearEntry}><Glyphicon glyph="remove-sign" /></Button>
+                  <Button onClick={this.clearEntry}><Glyphicon glyph="remove-circle" /></Button>
                 </InputGroup.Button>
               </InputGroup>
             </FormGroup>
