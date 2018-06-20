@@ -101,8 +101,12 @@ apiRoutes.use(function (req, res, next) {
 let decryptedObj;
 let encrypted = fs.readFileSync('' + process.env.ENCFILE);
 kms.decrypt({ CiphertextBlob: encrypted }).promise()
-  .then(decrypted => {
-    decryptedObj = JSON.parse(decrypted.Plaintext.toString());
+  .then(decryptedKey => {
+    const decipher = crypto.createDecipher('aes192', decryptedKey.Plaintext);
+    let encrypted = fs.readFileSync(process.env.ENCFILE + '.enc', { encoding: 'utf8' });
+    let decrypted = decipher.update(encrypted, 'hex', 'utf8');
+    decrypted += decipher.final('utf8');
+    decryptedObj = JSON.parse(decrypted);
     decryptedObj.contents.sort(function (a, b) { return a.name.localeCompare(b.name); });
   })
   .catch(err => console.error(err));
