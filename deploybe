@@ -4,6 +4,3 @@ npm config set production true
 npm install
 export AWS_CLIENT_TIMEOUT=300000
 sls deploy
-rm -rf node_modules
-npm config set production false
-npm install
