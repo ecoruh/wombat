@@ -12,7 +12,6 @@ exports.endpoint = (event, context) => {
   if (!security.validToken(token)) {
     return api.error(context, 400, 'Bad request'); 
   }
-  let decryptedObj;
   let encryptedKey = fs.readFileSync(`${process.env.FILE}`);
   kms.decrypt({ CiphertextBlob: encryptedKey }).promise()
     .then(decryptedKey => {
