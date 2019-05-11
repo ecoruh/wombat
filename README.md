@@ -71,9 +71,9 @@ cd crypto
 node app sample
 ```
 
-## Point to node v6.10.0
+## Point to node v8.10.0
 ```
-nvm use 6.10.0
+nvm use 8.10.0
 ```
 
 ### Deploy back-end
